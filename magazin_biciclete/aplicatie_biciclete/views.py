@@ -57,7 +57,7 @@ def info(request):
                         <p>{afis_data(data_param)}</p>
                         {param_section}
                     """
-    return render(request, 'aplicatie_biciclete/info.html', {'continut_info': continut_info} )
+    return render(request, 'templates/aplicatie_biciclete/info.html', {'continut_info': continut_info} )
 
 class Accesare:
     id_cnt=0 
