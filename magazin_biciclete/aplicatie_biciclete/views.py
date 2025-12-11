@@ -86,13 +86,19 @@ def info(request):
     
     data_param = request.GET.get("data")
     
+    categorii_meniu = Categorie.objects.all().order_by('nume_categorie')
     continut_info = f"""
                     <h1>Informatii despre server </h1>
                         <p>{afis_data(data_param)}</p>
                         {param_section}
                     """
-    return render(request, 'aplicatie_biciclete/info.html', {'continut_info': continut_info} )
-
+    context = {
+        'continut_info': continut_info, 
+        'titlu_tab': 'Info Server',
+        'ip_client': request.META.get('REMOTE_ADDR', ''),
+        'lista_categorii': categorii_meniu, # <--- Esențial pentru meniu
+    }
+    return render(request, 'aplicatie_biciclete/info.html', context)
 class Accesare:
     id_cnt=0 
     
@@ -282,4 +288,11 @@ def afis_log(request):
             output_html.append(f"<p>Pagina cu cele mai multe accesari: {pagina_max} ({nr_max} accesari)</p>")
             output_html.append(f"<p>Pagina cu cele mai putine accesari: {pagina_min} ({nr_min} accesari)</p>")
 
-    return HttpResponse("".join(output_html))
+    categorii_meniu = Categorie.objects.all().order_by('nume_categorie')
+    context = {
+        'continut_log': "".join(output_html), # Trimitem HTML-ul generat
+        'titlu_tab': 'Jurnal Accesari',
+        'ip_client': request.META.get('REMOTE_ADDR', ''),
+        'lista_categorii': categorii_meniu #<--- Esențial pentru meniu
+    }
+    return render(request, 'aplicatie_biciclete/log.html', context)

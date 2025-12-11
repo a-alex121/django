@@ -1,0 +1,12 @@
+{% extends 'aplicatie_biciclete/baza.html' %}
+
+{% block title %} Jurnal Accesari {% endblock %}
+
+{% block main %}
+    <div style>
+        <h1>Logs</h1>
+        <div>
+            {{ continut_log|safe }}
+        </div>
+    </div>
+{% endblock %}

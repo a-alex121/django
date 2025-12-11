@@ -1,10 +1,9 @@
-<!DOCTYPE html>
-<html lang="ro">
-<head>
-    <meta charset="UTF-8">
-    <title>Informații despre server</title>
-</head>
-<body>
-    {{ continut_info|safe }} 
-</body>
-</html>
+{% extends 'aplicatie_biciclete/baza.html' %}
+
+{% block title %} Info Server {% endblock %}
+
+{% block main %}
+    <div>
+        {{ continut_info|safe }}
+    </div>
+{% endblock %}

@@ -1,6 +1,5 @@
 from django.db import models
 
-# Create your models here.
 class Categorie(models.Model):
     nume_categorie = models.CharField(max_length=50, unique=True)
     descriere = models.TextField(null=True)

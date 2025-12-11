@@ -9,6 +9,5 @@ urlpatterns = [
     path("produse", views.produse, name="produse"),
     path("contact", views.contact, name="contact"),
     path("cos_virtual", views.in_lucru, name="cos_virtual"),
-    # Ruta pentru categoriile din meniu
     path("produse/<str:nume_categorie>", views.in_lucru, name="produse_pe_categorie"),
 ]
