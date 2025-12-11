@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="utf-8">
+    <title>{% block title %} Magazin Biciclete {% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'aplicatie_biciclete/css/style.css' %}">
+</head>
+<body>
+   <header>
+        <div class="topbar">
+            <h1 class="logo"> 
+                <a href="{% url 'index' %}">
+                    <img src="{% static 'aplicatie_biciclete/imagini/logo.png' %}" alt="Logo" class="logo-img">
+                </a>
+            </h1>
+            <nav class="menu">
+                <ul class="menu-list">
+                    <li> <a href="{% url 'index' %}">Acasa</a>
+                        <ul class="submenu">
+                            <li> <a href="{% url 'index' %}#prezentare">Prezentare</a></li>
+                            <li> <a href="{% url 'index' %}#oferte">Oferte</a></li>
+                        </ul>
+                    </li>
+                    <li> <a href="{% url 'produse' %}">Produse</a></li>
+                    
+                    <li> <a href="{% url 'produse'%}">Categorii</a>
+                        <ul class="submenu">
+                            {% for cat in toate_categoriile %}
+                            <li>
+                                <a href="{% url 'produse_pe_categorie' cat.nume_categorie %}"> {{cat.nume_categorie}} </a>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                    
+                    <li> <a href="{% url 'despre' %}">Despre</a> </li>
+                    <li> <a href="{% url 'contact'%}">Contact</a></li>
+                    <li> <a href="{% url 'cos_virtual'%}">Cos</a></li>
+                </ul>
+            </nav>
+        </div>
+   </header>
+   
+   <main>
+    {% block main %} {% endblock %}
+   </main>
+   
+   <footer>
+        <div class="footer-inner">
+            <p>&copy; 2025 Magazin Biciclete</p>
+            <p>IP Client: {{ ip_client }}</p>
+        </div>
+   </footer>
+</body>
+</html>

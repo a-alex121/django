@@ -2,13 +2,48 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from . import middleware
 import logging
-# Asigură-te că modelul Categorie există în models.py sau șterge importul dacă nu e folosit
-# from .models import Categorie 
 import locale
 from datetime import datetime
+from .models import Categorie
 
 def index(request):
-    return HttpResponse("Primul raspuns")
+    # Extragem categoriile pentru meniu
+    categorii_meniu = Categorie.objects.all().order_by('nume_categorie')
+    
+    context = {
+        "titlu_tab": "Magazin Biciclete",
+        "banner_text": "Cele mai bune biciclete la un click distanta",
+        "ip_client": request.META.get('REMOTE_ADDR', ''),
+        "toate_categoriile": categorii_meniu,
+    }
+    return render(request, "aplicatie_biciclete/index.html", context)
+
+def despre(request):
+    categorii_meniu = Categorie.objects.all().order_by('nume_categorie')
+    
+    context = {
+        "titlu_tab": "Despre Noi",
+        "ip_client": request.META.get('REMOTE_ADDR', ''),
+        "toate_categoriile": categorii_meniu,
+    }
+    return render(request, "aplicatie_biciclete/despre.html", context)
+
+def in_lucru(request):
+    categorii_meniu = Categorie.objects.all().order_by('nume_categorie')
+    
+    context = {
+        "titlu_tab": "In Lucru",
+        "ip_client": request.META.get('REMOTE_ADDR', ''),
+        "toate_categoriile": categorii_meniu,
+    }
+    return render(request, "aplicatie_biciclete/in_lucru.html", context)
+
+# View-uri placeholder pentru meniu
+def produse(request):
+    return in_lucru(request)
+
+def contact(request):
+    return in_lucru(request)
 
 l=[]
 def pag2(request):
@@ -57,7 +92,7 @@ def info(request):
                         <p>{afis_data(data_param)}</p>
                         {param_section}
                     """
-    return render(request, 'templates/aplicatie_biciclete/info.html', {'continut_info': continut_info} )
+    return render(request, 'aplicatie_biciclete/info.html', {'continut_info': continut_info} )
 
 class Accesare:
     id_cnt=0 

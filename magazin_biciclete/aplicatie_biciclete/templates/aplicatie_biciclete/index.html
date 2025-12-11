@@ -1,0 +1,17 @@
+{% extends 'aplicatie_biciclete/baza.html' %}
+{% load static %}
+
+{% block title %} Acasa {% endblock %}
+
+{% block main %}
+    <section id="prezentare" class="hero">
+        <img src="{% static 'aplicatie_biciclete/images/banner.jpg' %}" alt="Banner Biciclete" class="hero-img">
+        <h2> {{ banner_text }} </h2>
+        <p>Exploreaza gama noastra variata de biciclete pentru orice teren.</p>
+    </section>
+
+    <section id="oferte" class="oferte">
+        <h2>Oferte Speciale</h2>
+        <p>Aici vor aparea bicicletele la promotie.</p>
+    </section>
+{% endblock %}
