@@ -11,7 +11,7 @@
         <div class="topbar">
             <h1 class="logo"> 
                 <a href="{% url 'index' %}">
-                    <img src="{% static 'aplicatie_biciclete/imagini/logo.png' %}" alt="Logo" class="logo-img">
+                    <img src="{% static 'aplicatie_biciclete/images/logo.png' %}" alt="Logo" class="logo-img">
                 </a>
             </h1>
             <nav class="menu">
@@ -26,7 +26,7 @@
                     
                     <li> <a href="{% url 'produse'%}">Categorii</a>
                         <ul class="submenu">
-                            {% for cat in toate_categoriile %}
+                            {% for cat in lista_categorii %}
                             <li>
                                 <a href="{% url 'produse_pe_categorie' cat.nume_categorie %}"> {{cat.nume_categorie}} </a>
                             </li>

@@ -42,7 +42,7 @@ body {
     position: absolute;
     top: 100%;
     left: 0;
-    background-color: #444;
+    background-color: grey;
     list-style: none;
     padding: 10px;
     min-width: 150px;
@@ -61,8 +61,8 @@ main { flex: 1; padding: 20px; }
 .hero-img { max-width: 100%; height: auto; border-radius: 8px; }
 
 footer {
-    background-color: #222;
-    color: #ccc;
+    background-color: darkslategray;
+    color: lightgray;
     text-align: center;
     padding: 10px;
     margin-top: auto;

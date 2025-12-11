@@ -14,7 +14,7 @@ def index(request):
         "titlu_tab": "Magazin Biciclete",
         "banner_text": "Cele mai bune biciclete la un click distanta",
         "ip_client": request.META.get('REMOTE_ADDR', ''),
-        "toate_categoriile": categorii_meniu,
+        "lista_categorii": categorii_meniu,
     }
     return render(request, "aplicatie_biciclete/index.html", context)
 
@@ -24,7 +24,7 @@ def despre(request):
     context = {
         "titlu_tab": "Despre Noi",
         "ip_client": request.META.get('REMOTE_ADDR', ''),
-        "toate_categoriile": categorii_meniu,
+        "lista_categorii": categorii_meniu,
     }
     return render(request, "aplicatie_biciclete/despre.html", context)
 
@@ -34,7 +34,7 @@ def in_lucru(request):
     context = {
         "titlu_tab": "In Lucru",
         "ip_client": request.META.get('REMOTE_ADDR', ''),
-        "toate_categoriile": categorii_meniu,
+        "lista_categorii": categorii_meniu,
     }
     return render(request, "aplicatie_biciclete/in_lucru.html", context)
 
@@ -49,7 +49,6 @@ l=[]
 def pag2(request):
     global l
     a=request.GET.get("a",10)
-    print(request.GET)
     l.append(a)
     return HttpResponse(f"<b>Am primit</b>: {l}")
 
